@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"github.com/balqisgautama/okami-auth/config"
+	"github.com/balqisgautama/okami-auth/seeder"
+	"github.com/balqisgautama/okami-auth/server"
 	"os"
 )
 
@@ -14,6 +16,8 @@ func main() {
 	}
 
 	config.GenerateConfiguration(arguments)
+	server.SetServerConfig()
+	seeder.DBMigrate()
 
 	fmt.Println(config.ApplicationConfiguration.GetServerHost())
 	fmt.Println(config.ApplicationConfiguration.GetServerPort())

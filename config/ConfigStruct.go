@@ -15,6 +15,14 @@ type Configuration interface {
 	GetServerVersion() string
 	GetServerResourceID() string
 	GetServerPrefixPath() string
+	GetPostgreSQLAddress() string
+	GetPostgreSQLSchema() string
+	GetPostgreSQLMaxOpenConnection() int
+	GetPostgreSQLMaxIdleConnection() int
+	GetPostgreSQLAddressView() string
+	GetPostgreSQLSchemaView() string
+	GetPostgreSQLMaxOpenConnectionView() int
+	GetPostgreSQLMaxIdleConnectionView() int
 }
 
 func GenerateConfiguration(arg string) {

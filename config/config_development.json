@@ -10,5 +10,17 @@
     "resource_id": "$(RESOURCE_ID)",
     "prefix_path": "$(PREFIX_PATH)",
     "log_level": 10
+  },
+  "postgresql": {
+    "address": "$(DB_CONNECTION)",
+    "default_schema": "$(DB_SCHEMA)",
+    "max_open_connection": 500,
+    "max_idle_connection": 100
+  },
+  "postgresql_view": {
+    "address": "$(DB_CONNECTION_VIEW)",
+    "default_schema": "$(DB_VIEW_SCHEMA)",
+    "max_open_connection": 5,
+    "max_idle_connection": 2
   }
 }
