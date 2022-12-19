@@ -1,0 +1,14 @@
+{
+  "server": {
+    "protocol": "http",
+    "ethernet": "eth0",
+    "auto_add_host": false,
+    "auto_add_client": false,
+    "host": "$(HOST)",
+    "port": "$(PORT)",
+    "version": "$(VERSION)",
+    "resource_id": "$(RESOURCE_ID)",
+    "prefix_path": "$(PREFIX_PATH)",
+    "log_level": 10
+  }
+}
