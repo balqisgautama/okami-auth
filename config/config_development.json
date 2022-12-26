@@ -22,5 +22,8 @@
     "default_schema": "$(DB_VIEW_SCHEMA)",
     "max_open_connection": 5,
     "max_idle_connection": 2
+  },
+  "jwt": {
+    "key": "($JWT_KEY)"
   }
 }

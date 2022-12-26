@@ -2,7 +2,7 @@ package seeder
 
 import (
 	"fmt"
-	"github.com/balqisgautama/okami-auth/server"
+	"github.com/balqisgautama/okami-auth/config/server"
 	"github.com/gobuffalo/packr/v2"
 	migrate "github.com/rubenv/sql-migrate"
 	"log"

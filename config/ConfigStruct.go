@@ -23,6 +23,7 @@ type Configuration interface {
 	GetPostgreSQLSchemaView() string
 	GetPostgreSQLMaxOpenConnectionView() int
 	GetPostgreSQLMaxIdleConnectionView() int
+	GetJWTKey() string
 }
 
 func GenerateConfiguration(arg string) {

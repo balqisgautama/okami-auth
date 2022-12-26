@@ -3,7 +3,7 @@ package server
 import (
 	"database/sql"
 	"github.com/balqisgautama/okami-auth/config"
-	"github.com/balqisgautama/okami-auth/database"
+	"github.com/balqisgautama/okami-auth/config/database"
 )
 
 var ServerConfig serverConfig

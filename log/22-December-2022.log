@@ -1,0 +1,5 @@
+{"level":"info","ts":"2022-12-22T11:06:09.415+0700","caller":"router/RestController.go:14","msg":"Hello World"}
+{"level":"error","ts":"2022-12-22T11:06:09.415+0700","caller":"router/RestController.go:15","msg":"Not able to reach blog.","url":"codewithmukesh.com","stacktrace":"github.com/balqisgautama/okami-auth/http/router.ApiController\n\tD:/okami/playground/auth/http/router/RestController.go:15\nmain.main\n\tD:/okami/playground/auth/main.go:37\nruntime.main\n\tC:/Users/balqi/go/go1.19.3/src/runtime/proc.go:250"}
+{"level":"info","ts":"2022-12-22T11:08:03.036+0700","caller":"router/RestController.go:14","msg":"Hello World"}
+{"level":"error","ts":"2022-12-22T11:08:03.036+0700","caller":"router/RestController.go:15","msg":"Not able to reach blog.","url":"localhost","stacktrace":"github.com/balqisgautama/okami-auth/http/router.ApiController\n\tD:/okami/playground/auth/http/router/RestController.go:15\nmain.main\n\tD:/okami/playground/auth/main.go:37\nruntime.main\n\tC:/Users/balqi/go/go1.19.3/src/runtime/proc.go:250"}
+{"level":"debug","ts":"2022-12-22T11:08:03.043+0700","caller":"router/RestController.go:16","msg":"logger debug","debug":"try"}

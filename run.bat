@@ -8,5 +8,6 @@ set DB_CONNECTION=user=postgres password=bg1603 dbname=okami sslmode=disable hos
 set DB_SCHEMA=oauth
 set DB_VIEW_CONNECTION=user=postgres password=bg1603 dbname=okami sslmode=disable host=localhost port=5432
 set DB_VIEW_SCHEMA=oauth
+set JWT_KEY=5892fbbd-c740-4cb8-bf01-4c0ec3d72001
 
 go run main.go development
