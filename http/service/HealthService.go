@@ -18,9 +18,11 @@ func (input healthService) New() (output healthService) {
 }
 
 func (input healthService) CheckingHealth(request *http.Request) (output res.APIResponse, header map[string]string, err error) {
+	input.FuncName = "CheckingHealth"
+
 	output.Status.Success = true
 	output.Status.Message = "UP"
-	if server.ServerConfig.DBConnection.Ping() == nil {
+	if server.ServerConfig.DBConnection.Ping() != nil {
 		output.Status.Message = "DOWN"
 		output.Status.Detail = []string{"PostgreSQL"}
 	}

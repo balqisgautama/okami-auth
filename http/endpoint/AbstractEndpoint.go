@@ -78,6 +78,8 @@ func setHeader(header map[string]string, responseWriter http.ResponseWriter) {
 func finish(responseWriter http.ResponseWriter, err error, output res.APIResponse) {
 	if err != nil {
 		writeErrorResponse(responseWriter, err)
+	} else if output.Status.Code == constanta.HeaderValueContentTypeHTML {
+		writeHTMLResponse(responseWriter, output)
 	} else {
 		writeSuccessResponse(responseWriter, output)
 	}
@@ -100,4 +102,9 @@ func writeSuccessResponse(responseWriter http.ResponseWriter, output res.APIResp
 	if errorS != nil {
 		util.Logger.Info("writeSuccessResponse", zap.String("details", errorS.Error()))
 	}
+}
+
+func writeHTMLResponse(responseWriter http.ResponseWriter, output res.APIResponse) {
+	responseWriter.Header().Set(constanta.HeaderKeyContentType, constanta.HeaderValueContentTypeHTML)
+	responseWriter.Write([]byte(output.Status.Message))
 }

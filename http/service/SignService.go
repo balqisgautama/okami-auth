@@ -29,13 +29,15 @@ func (input signService) New() (output signService) {
 func (input signService) SignIn(request *http.Request) (output res.APIResponse, header map[string]string, err error) {
 	input.FuncName = "SignIn"
 
-	result, output := input.readBodyAndValidateSigning(request, req.ValidateSign)
-	if !output.Status.Success {
+	result, output_ := input.readBodyAndValidateSigning(request, req.ValidateSign)
+	if output_.Status.Code != "" {
+		output = output_
 		return
 	}
 
-	userFound, output := dao.UserDAO.GetUserByEmail(result.Email)
-	if output.Status.Code != "" {
+	userFound, output_ := dao.UserDAO.GetUserByEmail(result.Email)
+	if output_.Status.Code != "" {
+		output = output_
 		return
 	}
 
@@ -84,7 +86,7 @@ func (input signService) readBodyAndValidateSigning(request *http.Request, valid
 	check, text, limit := util.IsPasswordStandardValid(inputStruct.Password)
 	if !check {
 		err := errors.New(text + "_" + limit)
-		dto.GenerateInvalidRequestBody(err, input.FileName, input.FuncName)
+		output = dto.GenerateInvalidRequestBody(err, input.FileName, input.FuncName)
 		return
 	}
 

@@ -48,11 +48,11 @@ func ValidatorJWTUser(jwtToken string) (tokenData *PayloadJWTUser, output res.AP
 		return
 	}
 
-	tokenData = convertTokenData(token.Claims.(*PayloadJWTUser))
+	tokenData = convertUserToken(token.Claims.(*PayloadJWTUser))
 	return
 }
 
-func convertTokenData(input interface{}) *PayloadJWTUser {
+func convertUserToken(input interface{}) *PayloadJWTUser {
 	bolB, _ := json.Marshal(input)
 	tokenData := PayloadJWTUser{}
 	json.Unmarshal(bolB, &tokenData)

@@ -28,6 +28,9 @@ type DevelopmentConfig struct {
 	JWT struct {
 		Key string `envconfig:"JWT_KEY"`
 	}
+	Crypto struct {
+		Key string `envconfig:"CRYPTO_KEY"`
+	}
 }
 
 func (input DevelopmentConfig) GetServerHost() string {
@@ -69,9 +72,11 @@ func (input DevelopmentConfig) GetPostgreSQLMaxOpenConnectionView() int {
 func (input DevelopmentConfig) GetPostgreSQLMaxIdleConnectionView() int {
 	return input.PostgresqlView.MaxIdleConnection
 }
-
 func (input DevelopmentConfig) GetJWTKey() string {
 	return input.JWT.Key
+}
+func (input DevelopmentConfig) GetCryptoKey() string {
+	return input.Crypto.Key
 }
 
 func convertStringParamToInt(value string) int {

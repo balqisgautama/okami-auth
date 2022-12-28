@@ -1,0 +1,8 @@
+{"level":"info","ts":"2022-12-27T14:25:09.920+0700","caller":"endpoint/AbstractEndpoint.go:36","msg":"recovery"}
+{"level":"info","ts":"2022-12-27T14:26:35.078+0700","caller":"endpoint/AbstractEndpoint.go:36","msg":"recovery"}
+{"level":"info","ts":"2022-12-27T14:33:33.639+0700","caller":"endpoint/AbstractEndpoint.go:36","msg":"recovery"}
+{"level":"info","ts":"2022-12-27T14:33:55.011+0700","caller":"endpoint/AbstractEndpoint.go:36","msg":"recovery"}
+{"level":"info","ts":"2022-12-27T17:29:58.315+0700","caller":"endpoint/AbstractEndpoint.go:36","msg":"recovery"}
+{"level":"info","ts":"2022-12-27T17:30:42.633+0700","caller":"endpoint/AbstractEndpoint.go:36","msg":"recovery"}
+{"level":"info","ts":"2022-12-27T17:32:43.462+0700","caller":"endpoint/AbstractEndpoint.go:36","msg":"recovery"}
+{"level":"info","ts":"2022-12-27T17:35:08.776+0700","caller":"endpoint/AbstractEndpoint.go:36","msg":"recovery"}

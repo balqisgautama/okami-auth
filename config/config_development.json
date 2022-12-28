@@ -25,5 +25,8 @@
   },
   "jwt": {
     "key": "($JWT_KEY)"
+  },
+  "crypto": {
+    "key": "($CRYPTO_KEY)"
   }
 }
