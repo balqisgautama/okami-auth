@@ -85,7 +85,7 @@ func (input signInService) Step2(request *http.Request) (output res.APIResponse,
 		return
 	}
 
-	output_ = service.EmailService.SendLoginConfirmationCode(userFound.Email.String, token)
+	output_ = service.EmailService.SendLoginConfirmationLink(userFound.Email.String, token)
 	if output_.Status.Code != "" {
 		output = output_
 		return

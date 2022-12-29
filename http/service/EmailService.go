@@ -69,18 +69,18 @@ func (input emailService) generateResendActivationURL(email string, clientID str
 	return
 }
 
-func (input emailService) SendLoginConfirmationCode(sendTo string, token string) (output res.APIResponse) {
-	input.FuncName = "SendLoginConfirmationCode"
+func (input emailService) SendLoginConfirmationLink(sendTo string, token string) (output res.APIResponse) {
+	input.FuncName = "SendLoginConfirmationLink"
 
 	subject := "Login Confirmation"
 	title := "Hi, " + sendTo
 	beforeButton := "To validate this login, please click on the confirmation link below"
-	button := token
-	buttonUrl := ""
+	button := "Continue Login"
+	buttonUrl := input.generateLoginConfirmationURL(token)
 	afterButton := "Please do not reply to this email"
 
 	send := util.SendEmailWithTemplate([]string{sendTo}, subject,
-		constanta.PathAssetResponseHTMLWithoutButton, title, beforeButton, button, buttonUrl, afterButton)
+		constanta.PathAssetResponseHTMLButton, title, beforeButton, button, buttonUrl, afterButton)
 	if !send {
 		output = model.GenerateMailError(input.FileName, input.FuncName)
 		return
@@ -89,9 +89,9 @@ func (input emailService) SendLoginConfirmationCode(sendTo string, token string)
 	return
 }
 
-//func (input emailService) generateLoginConfirmationURL(token string) (url string) {
-//	url = config.ApplicationConfiguration.GetServerHost() + ":" +
-//		strconv.Itoa(config.ApplicationConfiguration.GetServerPort()) + "/" +
-//		config.ApplicationConfiguration.GetServerPrefixPath() + "/sign/in/step3/" + token
-//	return
-//}
+func (input emailService) generateLoginConfirmationURL(token string) (url string) {
+	url = config.ApplicationConfiguration.GetServerHost() + ":" +
+		strconv.Itoa(config.ApplicationConfiguration.GetServerPort()) + "/" +
+		config.ApplicationConfiguration.GetServerPrefixPath() + "/sign/in/step3/" + token
+	return
+}
