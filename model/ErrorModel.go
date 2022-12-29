@@ -49,3 +49,12 @@ func GenerateMailError(fileName string, funcName string) (output res.APIResponse
 	output.Status.Detail = []string{fileName, funcName}
 	return
 }
+
+func GenerateLoginError(fileName string, funcName string) (output res.APIResponse) {
+	resourceID = strings.ToUpper(config.ApplicationConfiguration.GetServerResourceID())
+	output.Status.Success = false
+	output.Status.Code = resourceID + "-370006-LOGIN"
+	output.Status.Message = "Login Failed"
+	output.Status.Detail = []string{fileName, funcName}
+	return
+}

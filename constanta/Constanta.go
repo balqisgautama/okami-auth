@@ -12,14 +12,17 @@ const RequestDELETE = "DELETE"
 const HeaderKeyContentType = "Content-Type"
 const HeaderValueContentTypeHTML = "text/html"
 
-const TokenHeaderNameConstanta = "Authorization"
-const AccessHeaderNameConstanta = "access"
-const ClientIDHeaderNameConstanta = "client-id"
+const TokenHeaderName = "Authorization"
+const AccessHeaderName = "access"
+const ClientIDHeaderName = "client-id"
+const SecretTokenHeaderName = "secret-token"
 
 const ParamSearchID = "search-id"
 
 const VarToken = "token"
 const VarCode = "code"
+
+const ResponseTypeRedirect = "redirect"
 
 const UserPending = 1 // user belum melakukan aktivasi
 const UserActive = 2
@@ -27,6 +30,7 @@ const UserDeleted = 3
 
 const Time8Hour = 8 * time.Hour
 const Time3Minute = 3 * time.Minute
+const Time30Minute = 30 * time.Minute
 
 const DescIncorrectFormat = "incorrect format"
 const DescLoginFailed = "login failed"

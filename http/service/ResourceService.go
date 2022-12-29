@@ -32,7 +32,7 @@ func (input resourceService) CreateResource(request *http.Request) (output res.A
 		output = output_
 		return
 	}
-	clientID := request.Header.Get(constanta.ClientIDHeaderNameConstanta)
+	clientID := request.Header.Get(constanta.ClientIDHeaderName)
 	resourceInserted, output_ := dao.ResourceDAO.ResourceInsert(result, clientID)
 	if output_.Status.Code != "" {
 		output = output_
@@ -53,7 +53,7 @@ func (input resourceService) EditResource(request *http.Request) (output res.API
 		return
 	}
 
-	clientID := request.Header.Get(constanta.ClientIDHeaderNameConstanta)
+	clientID := request.Header.Get(constanta.ClientIDHeaderName)
 	resourceUpdated, output_ := dao.ResourceDAO.UpdateResourceByID(result.ResourceID, result.Surname, result.Nickname, clientID)
 	if output_.Status.Code != "" {
 		output = output_
@@ -72,7 +72,7 @@ func (input resourceService) DeleteResource(request *http.Request) (output res.A
 	temp := params[constanta.ParamSearchID]
 	searchByID, _ := strconv.ParseInt(temp, 10, 64)
 
-	clientID := request.Header.Get(constanta.ClientIDHeaderNameConstanta)
+	clientID := request.Header.Get(constanta.ClientIDHeaderName)
 
 	resourceFound, output_ := dao.ResourceDAO.GetByResourceID(searchByID)
 	if output_.Status.Code != "" {

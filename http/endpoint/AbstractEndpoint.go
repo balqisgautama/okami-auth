@@ -40,10 +40,10 @@ func serve(serveFunction func(*http.Request) (res.APIResponse, map[string]string
 			}
 		}
 
-		finish(responseWriter, err, output)
+		finish(request, responseWriter, err, output)
 	}()
 
-	sysadminUser := request.Header.Get(constanta.AccessHeaderNameConstanta)
+	sysadminUser := request.Header.Get(constanta.AccessHeaderName)
 
 	// only sysadmin can access
 	if sysadminAccess && sysadminUser == "1" {
@@ -75,11 +75,13 @@ func setHeader(header map[string]string, responseWriter http.ResponseWriter) {
 	}
 }
 
-func finish(responseWriter http.ResponseWriter, err error, output res.APIResponse) {
+func finish(request *http.Request, responseWriter http.ResponseWriter, err error, output res.APIResponse) {
 	if err != nil {
 		writeErrorResponse(responseWriter, err)
 	} else if output.Status.Code == constanta.HeaderValueContentTypeHTML {
 		writeHTMLResponse(responseWriter, output)
+	} else if output.Status.Code == constanta.ResponseTypeRedirect {
+		writeRedirectResponse(request, responseWriter, output)
 	} else {
 		writeSuccessResponse(responseWriter, output)
 	}
@@ -106,5 +108,12 @@ func writeSuccessResponse(responseWriter http.ResponseWriter, output res.APIResp
 
 func writeHTMLResponse(responseWriter http.ResponseWriter, output res.APIResponse) {
 	responseWriter.Header().Set(constanta.HeaderKeyContentType, constanta.HeaderValueContentTypeHTML)
-	responseWriter.Write([]byte(output.Status.Message))
+	_, err := responseWriter.Write([]byte(output.Status.Message))
+	if err != nil {
+		util.Logger.Error("Not able to sent response.")
+	}
+}
+
+func writeRedirectResponse(request *http.Request, responseWriter http.ResponseWriter, output res.APIResponse) {
+	http.Redirect(responseWriter, request, output.Status.Message, http.StatusSeeOther)
 }

@@ -16,7 +16,7 @@ type SignForm struct {
 }
 
 func ValidateSign(inputStruct *SignForm) (output res.APIResponse) {
-	funcName = "ValidateResourceForm"
+	funcName = "ValidateSign"
 	validate = validator.New()
 	err := validate.Struct(inputStruct)
 	if err != nil {

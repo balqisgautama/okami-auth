@@ -13,13 +13,25 @@ func ApiController(port int) {
 	handler := mux.NewRouter()
 
 	handler.HandleFunc(setPath("/health"), endpoint.HealthEndpoint.CheckingHealth).Methods("GET", "OPTIONS")
-	handler.HandleFunc(setPath("/sign"), endpoint.SignEndpoint.UserSign)
-	handler.HandleFunc(setPath("/resource"), endpoint.ResourceEndpoint.Resource)
-	handler.HandleFunc(setPath("/registration"), endpoint.RegistrationEndpoint.Registration).Methods("POST", "OPTIONS")
+
+	// registration
+	handler.HandleFunc(setPath("/registration"),
+		endpoint.RegistrationEndpoint.Registration).Methods("POST", "OPTIONS")
 	handler.HandleFunc(setPath("/active/{"+constanta.VarToken+"}/{"+constanta.VarCode+"}"),
 		endpoint.RegistrationEndpoint.ActivationUser).Methods("GET", "OPTIONS")
 	handler.HandleFunc(setPath("/active/resend/{"+constanta.VarToken+"}/{"+constanta.VarCode+"}"),
 		endpoint.RegistrationEndpoint.ActivationUserResend).Methods("GET", "OPTIONS")
+
+	// login
+	handler.HandleFunc(setPath("/sign/in/step1"),
+		endpoint.SignInEndpoint.Step1).Methods("POST", "OPTIONS")
+	handler.HandleFunc(setPath("/sign/in/step2"),
+		endpoint.SignInEndpoint.Step2).Methods("POST", "OPTIONS")
+	handler.HandleFunc(setPath("/sign/in/step3/{"+constanta.VarToken+"}"),
+		endpoint.SignInEndpoint.Step3).Methods("GET", "OPTIONS")
+
+	// crud resource
+	handler.HandleFunc(setPath("/resource"), endpoint.ResourceEndpoint.Resource)
 
 	//util.Logger.Info("Hello World")
 	//util.Logger.Error("Not able to reach blog.", zap.String("url", "localhost"))

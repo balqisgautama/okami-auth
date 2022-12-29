@@ -21,16 +21,16 @@ func MiddlewareCORSOrigin(next http.Handler) http.Handler {
 
 func MiddlewareCheckUserToken(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		token := r.Header.Get(constanta.TokenHeaderNameConstanta)
+		token := r.Header.Get(constanta.TokenHeaderName)
 		if token != "" {
 			tokenData, output_ := jwt.ValidatorJWTUser(token)
 			if output_.Status.Code != "" {
 				// user doesn't have access
-				r.Header.Set(constanta.AccessHeaderNameConstanta, "")
+				r.Header.Set(constanta.AccessHeaderName, "")
 			} else {
 				userFound, _ := dao.UserDAO.GetUserByClientID(tokenData.ClientID)
-				r.Header.Set(constanta.ClientIDHeaderNameConstanta, userFound.ClientID.String)
-				r.Header.Set(constanta.AccessHeaderNameConstanta, strconv.FormatInt(int64(userFound.Sysadmin.Int16), 10))
+				r.Header.Set(constanta.ClientIDHeaderName, userFound.ClientID.String)
+				r.Header.Set(constanta.AccessHeaderName, strconv.FormatInt(int64(userFound.Sysadmin.Int16), 10))
 			}
 		}
 		next.ServeHTTP(w, r)
