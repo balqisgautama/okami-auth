@@ -4,6 +4,24 @@
 OAuth adalah sistem untuk authentikasi user <br/>
 OAuth memiliki fitur membuat akun, aktivasi akun dan generate user token
 
+---
+
+<details>
+<summary><b>View table of contents</b></summary><br/>
+
+- [Membuat Akun / Registrasi](#membuat-akun--registrasi)
+- [Aktivasi Akun](#aktivasi-akun)
+  - [Send aktivasi link ke email user](#send-aktivasi-link-ke-email-user)
+  - [Resend aktivasi link ke email user](#resend-aktivasi-link-ke-email-user)
+- [Generate Token / Sign In](#generate-token--sign-in)
+  - [Step 1](#step-1)
+  - [Step 2](#step-2)
+  - [Step 3](#step-3)
+
+</details>
+
+---
+
 ## Membuat Akun / Registrasi
 ### HTTP Request (POST)
 > BASE_URL/okami/auth/registration
